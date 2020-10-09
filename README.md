@@ -1,29 +1,45 @@
-# Create React Express App
+# Yard Pal
 
-## About This Boilerplate
+![GitHub top language](https://img.shields.io/github/languages/top/s-suresh-kumar/yard-pal)
+[![GitHub license](https://img.shields.io/github/license/s-suresh-kumar/yard-pal)](LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+```short description goes here```
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+```replace this picture with an actual screenshot```
 
-## Starting the app locally
+![screenshot placeholder](https://placekitten.com/500/500)
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+## Table of Contents
 
-```
-npm install
-```
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributors](#contributing)
+- [License](#license)
 
-This should install node modules within the server and the client folder.
+## Installation
 
-After both installations complete, run the following command in your terminal:
+```installation instructions go here```
 
-```
-npm start
-```
+[back to Table of Contents](#table-of-contents)
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+## Usage
 
-## Deployment (Heroku)
+```usage information goes here```
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+[back to Table of Contents](#table-of-contents)
+
+## Contributors
+
+- list
+- our
+- names
+- here
+
+[back to Table of Contents](#table-of-contents)
+
+## License
+
+[MIT](LICENSE) copyright (c) 2020 ```list our names here```.
+
+[back to Table of Contents](#table-of-contents)
