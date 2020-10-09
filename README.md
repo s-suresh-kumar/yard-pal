@@ -2,7 +2,6 @@
 
 ![GitHub top language](https://img.shields.io/github/languages/top/s-suresh-kumar/yard-pal)
 [![GitHub license](https://img.shields.io/github/license/s-suresh-kumar/yard-pal)](LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
 ```short description goes here```
 
