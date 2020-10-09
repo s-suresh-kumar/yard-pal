@@ -8,23 +8,38 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yard-pal", {
   useUnifiedTopology: true,
 });
 
-const sellerSeed = {
-  email: "test@example.com",
-  password: "superSecure:)",
-  goal: 100,
-  items: [
-    {
-      name: "chair",
-      description: "very comfortable and awesome",
-      price: 20
-    },
-  ],
-};
+const sellerSeed = [
+  {
+    email: "test@example.com",
+    password: "superSecure:)",
+    goal: 100,
+    items: [
+      {
+        name: "chair",
+        description: "very comfortable and awesome",
+        price: 20
+      }
+    ]
+  },
+  {
+    email: "test1@example.com",
+    password: "superSecure:)",
+    goal: 100,
+    items: [
+      {
+        name: "chair",
+        description: "very comfortable and awesome",
+        price: 20
+      }
+    ]
+  },
+];
 
-db.Sellers.remove({})
+db.Sellers.deleteMany({})
   .then(() => db.Sellers.insertMany(sellerSeed))
   .then((data) => {
-    console.log(data.result + " records inserted!");
+    console.log('data', data);
+    console.log(data.length + " records inserted!");
     process.exit(0);
   })
   .catch((err) => {
