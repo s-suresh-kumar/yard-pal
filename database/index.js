@@ -5,7 +5,11 @@ mongoose.Promise = global.Promise;
 const dbName = "yard-pal";
 
 mongoose
-  .connect(process.env.MONGODB_URI || `mongodb://localhost/${dbName}`)
+  .connect(process.env.MONGODB_URI || `mongodb://localhost/${dbName}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(
     () => {
       console.log(`CONNECTED TO MONGO DB ${dbName}`);

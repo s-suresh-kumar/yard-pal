@@ -4,8 +4,8 @@ const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 mongoose.promise = Promise;
 
-// Define userSchema
-const userSchema = new Schema({
+// Define sellerSchema
+const sellerSchema = new Schema({
   email: {
     type: String,
     unique: true,
@@ -49,7 +49,7 @@ const userSchema = new Schema({
 });
 
 // Define schema methods
-userSchema.methods = {
+sellerSchema.methods = {
   checkPassword: function (inputPassword) {
     return bcrypt.compareSync(inputPassword, this.password);
   },
@@ -59,7 +59,7 @@ userSchema.methods = {
 };
 
 // Define hooks for pre-saving
-userSchema.pre("save", function (next) {
+sellerSchema.pre("save", function (next) {
   if (!this.password) {
     console.log("NO PASSWORD PROVIDED");
     next();
@@ -69,6 +69,6 @@ userSchema.pre("save", function (next) {
   }
 });
 
-const User = mongoose.model("User", userSchema);
+const seller = mongoose.model("seller", sellerSchema);
 
-module.exports = User;
+module.exports = seller;

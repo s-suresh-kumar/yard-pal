@@ -1,35 +1,45 @@
 const express = require("express");
-const path = require("path");
-const PORT = process.env.PORT || 3001;
-const app = express();
 const mongoose = require("mongoose");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const passport = require("passport");
+const path = require("path");
+
+const mongooseConnection = require("./database");
+const routes = require("./routes");
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Define middleware here
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yard-pal", {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-});
+// Sessions
+app.use(
+  session({
+    secret: "yard cats",
+    store: new MongoStore({
+      mongooseConnection,
+    }),
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
-  console.log("we're connected!");
-});
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// Add routes, both API and view
+app.use(routes);
 
+// Start the API server
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

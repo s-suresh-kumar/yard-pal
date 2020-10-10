@@ -1,8 +1,9 @@
 {
   "name": "yard-pal",
   "version": "1.0.0",
-  "description": "Mern Demo",
+  "description": "Sell your stuff locally and safely",
   "main": "server.js",
+  "repository": "github:s-suresh-kumar/yard-pal",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -14,18 +15,21 @@
     "heroku-postbuild": "npm run build"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "concurrently": "^5.3.0",
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.2",
     "connect-mongo": "^3.2.0",
     "express": "^4.16.3",
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.10.8",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.2.0"
   }
