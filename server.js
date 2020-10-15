@@ -1,10 +1,7 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const passport = require("passport");
-const fs = require("fs");
-const path = require('path'); 
 const multer = require("multer");
 
 const mongooseConnection = require("./database");
