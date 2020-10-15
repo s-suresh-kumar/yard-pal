@@ -140,4 +140,21 @@ router.put("/delItem", (req, res) => {
   }
 });
 
+//browse items
+
+router.get("/browseItems", (req, res) => {
+  console.log('hit route get /browseItems');
+  User.findOne(
+    { username: req.user.username }
+
+  ).then(dbItems => {
+    console.log('successfully fetched items');
+    console.log(dbItems)
+    res.json(dbItems);
+  }).catch(err => {
+    res.json(err);
+  });
+
+});
+
 module.exports = router;
