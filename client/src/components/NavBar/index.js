@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 
 function NavBar() {
+    console.log(window.location);
     return (
         <Nav fill variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
@@ -18,7 +19,10 @@ function NavBar() {
                     eventKey="signUp">Sign-up</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="browse">Browse Items</Nav.Link>
+                <Nav.Link 
+                as={Link}
+                to="/Browse"
+                eventKey="browse">Browse Items</Nav.Link>
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { LOADING, SET_USER } from '../store/actions';
 import { useStoreContext } from '../store/store';
 import Container from 'react-bootstrap/Container';
@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
 
 function Login() {
   const [, /* state */ dispatch] = useStoreContext();
@@ -45,6 +46,8 @@ function Login() {
         console.log(error);
       });
   };
+  
+
 
   return (
     <Container>
@@ -87,6 +90,9 @@ function Login() {
                 <Button className="btn btn-lg btn-primary btn-block" type="submit" onClick={handleSubmit}>
                   Login
                 </Button>
+                <Link className="btn btn-lg btn-primary btn-block" type="submit" as={Link} to="/Signup" >
+                  Sign Up
+                </Link>
               </Form>
             </Col>
           </Row>

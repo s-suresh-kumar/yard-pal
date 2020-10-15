@@ -33,7 +33,7 @@ function Signup() {
       })
       .then((response) => {
         if (!response.data.error) {
-          history.replace('/login');
+          history.replace('/Browse');
         } else {
           console.log('USERNAME TAKEN');
         }
@@ -52,7 +52,7 @@ function Signup() {
       <Row>
         <Col>
           <Row>
-            <Col className="col col-md-6 col-lg-4 border login bg-light mx-auto mt-4">
+            <Col className="col col-md-6 col-lg-4 border signup bg-light mx-auto mt-4">
               <Form>
                 <Form.Group>
                   <Form.Label

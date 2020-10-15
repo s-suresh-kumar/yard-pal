@@ -54,13 +54,13 @@ function About() {
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
                     <br />
                     <p>
-                        <a href="https://github.com/diuguide">
+                        <a target="_blank" href="https://github.com/diuguide">
                             <img className="gitlink" src="https://stagewp.sharethis.com/wp-content/uploads/2018/02/github.png" />
                         </a>
-                        <a href="github.com">
+                        <a target="_blank" href="https://diuguide.github.io/portfolio_react/">
                             <img className="websitelink" src="https://hatfieldmedia.com/wp-content/uploads/2019/05/Hatfield-Website-Circular-Icons1.png" />
                         </a>
-                        <a href="github.com">
+                        <a target="_blank" href="https://www.linkedin.com/in/everett-diuguid-583632197/">
                             <img className="linkedinlink" src="https://media.glassdoor.com/sqll/34865/linkedin-squarelogo-1559685522766.png" />
                         </a>
                     </p>
