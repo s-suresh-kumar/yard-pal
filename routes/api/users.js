@@ -70,7 +70,7 @@ router.post('/logout', (req, res) => {
 // sale items add
 router.put("/addItem", (req, res) => {
   console.log("hit route put /addItem");
-  // console.log("req", req);
+  console.log("req", req);
   if (req.user) {
     //add items to document
     console.log("in if req.user");
@@ -80,13 +80,22 @@ router.put("/addItem", (req, res) => {
       name: req.body.name,
       description: req.body.description,
       price: req.body.price,
-      img: {
+      image: {
         data: fs.readFileSync(
           path.join(__dirname + "/uploads/" + req.file.filename)
         ),
-        contentType: "image/png",
+        contentType: "image/jpg",
       },
     };
+    imgModel.create(obj, (err, item) => { 
+      if (err) { 
+          console.log(err); 
+      } 
+      else { 
+          // item.save(); 
+          // res.redirect('/'); 
+      } 
+  });
 
     // add item to db
     User.findOneAndUpdate(

@@ -14,6 +14,7 @@ function ItemModal() {
         name: '',
         description: '',
         price: 0,
+        image: "",
     });
 
     const handleChange = (event) => {
@@ -27,9 +28,10 @@ function ItemModal() {
         axios
             .put('/api/users/addItem', {
                 item: {
-                   name: newItemInfo.name,
-                description: newItemInfo.description,
-                price: newItemInfo.price 
+                    name: newItemInfo.name,
+                    description: newItemInfo.description,
+                    price: newItemInfo.price, 
+                    image: newItemInfo.image,
                 }
             })
             .then((response) => {
@@ -89,7 +91,13 @@ function ItemModal() {
                                 placeholder="Item Price"
                                 value={newItemInfo.price}
                                 onChange={handleChange} />
-                                <Form.File id="exampleFormControlFile1" label="Example file input" />
+                                <Form.File
+                                    id="exampleFormControlFile1"
+                                    label="Example file input"
+                                    name="image"
+                                    value={newItemInfo.image}
+                                    onChange={handleChange}
+                                />
                                 <Button
                                     color="dark"
                                     style={{ marginTop: '2rem' }}
