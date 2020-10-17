@@ -73,7 +73,7 @@ const userSchema = new Schema({
         },
       },
       // picture
-      image: {
+      img: {
         data: Buffer,
         contentType: String,
       }
