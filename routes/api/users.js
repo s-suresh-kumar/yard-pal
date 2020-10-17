@@ -8,9 +8,8 @@ const User = require("../../database/models/user");
 const passport = require("../../passport");
 
 router.post('/', (req, res) => {
-  
+
   const { username, password } = req.body;
-  
 
   User.findOne({ username: username }, (err, user) => {
     if (err) {
@@ -41,12 +40,10 @@ router.post('/', (req, res) => {
 router.post(
   "/login",
   (req, res, next) => {
-    
     next();
   },
   passport.authenticate("local"),
   (req, res) => {
-    
     res.send({
       username: req.user.username,
     });
@@ -54,7 +51,6 @@ router.post(
 );
 
 router.get('/', (req, res) => {
- 
   if (req.user) {
     res.json({ user: req.user });
   } else {
@@ -63,7 +59,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-
   if (req.user) {
     req.logout();
     res.status(200).json({ msg: "LOGGED OUT" });
@@ -99,7 +94,6 @@ router.put("/addItem", (req, res) => {
       { $push: { items: itemToAdd } },
       { safe: true, upsert: true, new: true, runValidators: true }
     ).then(dbItems => {
-      
       res.json(dbItems);
     }).catch(err => {
       res.json(err);
@@ -111,15 +105,12 @@ router.put("/addItem", (req, res) => {
 
 //sale item delete
 router.put('/delItem', (req, res) => {
-  
   if (req.user) {
     //del items to document
-    
     User.findOneAndUpdate(
       { username: req.user.username },
       { $pull: { items: { _id: req.body.itemId } } }, { safe: true, upsert: true },
     ).then(dbItems => {
-      
       res.json(dbItems);
     }).catch(err => {
       res.json(err);
@@ -130,18 +121,27 @@ router.put('/delItem', (req, res) => {
 });
 
 //browse items
-
 router.get("/browseItems", (req, res) => {
-  
-  User.findOne(
-    { username: req.user.username }
+  if (req.user) {
+    //fetch items from this seller only
+    User.findOne(
+      { username: req.user.username }
 
-  ).then(dbItems => {
-    
-    res.json(dbItems);
-  }).catch(err => {
-    res.json(err);
-  });
+    ).then(dbItems => {
+      console.log('successfully fetched items from this seller');
+      res.json(dbItems);
+    }).catch(err => {
+      res.json(err);
+    });
+  } else {
+    //in this case fetch all items from all sellers
+    User.find({}).then(dbItems => {
+      console.log('successfully fetched items from ALL sellers');
+      res.json(dbItems);
+    }).catch(err => {
+      res.json(err);
+    });
+  }
 
 });
 
