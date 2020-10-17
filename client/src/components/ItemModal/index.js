@@ -47,8 +47,8 @@ function ItemModal() {
     return (
         <Row>
             <Col>
-                <Button className="mt-1" variant="primary" onClick={handleShow}>
-                    Add 
+                <Button variant="primary" onClick={handleShow}>
+                    Add Item
                     </Button>
                 <Modal show={show}>
                     <Modal.Header>
@@ -89,6 +89,7 @@ function ItemModal() {
                                 placeholder="Item Price"
                                 value={newItemInfo.price}
                                 onChange={handleChange} />
+                                <Form.File id="exampleFormControlFile1" label="Example file input" />
                                 <Button
                                     color="dark"
                                     style={{ marginTop: '2rem' }}
