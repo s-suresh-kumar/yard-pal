@@ -4,21 +4,24 @@ import BrowseContainer from '../components/BrowseContainer/index'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import LoggedInAs from '../components/LoggedInAs/loggedInAs'
 
 function Browse() {
     return (
         <Container>
-            <Row>
+            <Row className="border">
                 <Col>
-                    <Row>
-                        <Col className="d-inline-flex m-3">
+                    <Row className="d-inline-flex">
+                        <Col className="col" >
                             <ItemModal />
-                            <h3 className="pleaseClick">Click here to add an item to your sale.</h3>
+                        </Col>
+                        <Col className="col float-right">
+                            <LoggedInAs />
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                        <BrowseContainer />
+                            <BrowseContainer />
                         </Col>
                     </Row>
                 </Col>

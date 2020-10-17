@@ -34,8 +34,9 @@ const App = () => {
     });
   }, [dispatch, history]);
 
-    return (
-      <>
+  return (
+    <>
+      <Switch>
         <Container>
           <Row>
             <Col>
@@ -43,15 +44,14 @@ const App = () => {
               <NavBar />
             </Col>
           </Row>
-        </Container>
-        <Switch>
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/Browse" component={Browse} />
           <Route exact path="/About" component={About} />
-        </Switch>
-      </>
-    );
-  }
+        </Container>
+      </Switch>
+    </>
+  );
+}
 
 export default App;
