@@ -3,6 +3,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const passport = require("passport");
 const multer = require("multer");
+require('dotenv').config()
 
 const mongooseConnection = require("./database");
 const routes = require("./routes");
