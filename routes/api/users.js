@@ -7,10 +7,10 @@ const router = express.Router();
 const User = require("../../database/models/user");
 const passport = require("../../passport");
 
-router.post("/", (req, res) => {
-  console.log("req", req);
+router.post('/', (req, res) => {
+  
   const { username, password } = req.body;
-  console.log("fired POST");
+  
 
   User.findOne({ username: username }, (err, user) => {
     if (err) {
@@ -41,24 +41,20 @@ router.post("/", (req, res) => {
 router.post(
   "/login",
   (req, res, next) => {
-    console.log("hit route post  /login");
-    console.log("req", req);
-    console.log("res", res);
+    
     next();
   },
   passport.authenticate("local"),
   (req, res) => {
-    console.log("req", req);
-    console.log("LOGGED IN", req.user);
+    
     res.send({
       username: req.user.username,
     });
   }
 );
 
-router.get("/", (req, res) => {
-  console.log("hit route get /");
-  console.log("req", req);
+router.get('/', (req, res) => {
+ 
   if (req.user) {
     res.json({ user: req.user });
   } else {
@@ -66,9 +62,8 @@ router.get("/", (req, res) => {
   }
 });
 
-router.post("/logout", (req, res) => {
-  console.log("hit route post /logout");
-  console.log("req", req);
+router.post('/logout', (req, res) => {
+
   if (req.user) {
     req.logout();
     res.status(200).json({ msg: "LOGGED OUT" });
@@ -103,38 +98,32 @@ router.put("/addItem", (req, res) => {
       { username: req.user.username },
       { $push: { items: itemToAdd } },
       { safe: true, upsert: true, new: true, runValidators: true }
-    )
-      .then((dbItems) => {
-        console.log("findoneandupdate success");
-        res.json(dbItems);
-      })
-      .catch((err) => {
-        res.json(err);
-      });
+    ).then(dbItems => {
+      
+      res.json(dbItems);
+    }).catch(err => {
+      res.json(err);
+    });
   } else {
     res.status(404).json({ msg: "NO SELLER LOGGED IN" });
   }
 });
 
 //sale item delete
-router.put("/delItem", (req, res) => {
-  console.log("hit route put /delItems");
-  console.log("req", req);
+router.put('/delItem', (req, res) => {
+  
   if (req.user) {
     //del items to document
-    console.log("in if req.user");
+    
     User.findOneAndUpdate(
       { username: req.user.username },
-      { $pull: { items: { _id: req.body.itemId } } },
-      { safe: true, upsert: true }
-    )
-      .then((dbItems) => {
-        console.log("findoneandupdate for delete success");
-        res.json(dbItems);
-      })
-      .catch((err) => {
-        res.json(err);
-      });
+      { $pull: { items: { _id: req.body.itemId } } }, { safe: true, upsert: true },
+    ).then(dbItems => {
+      
+      res.json(dbItems);
+    }).catch(err => {
+      res.json(err);
+    });
   } else {
     res.status(404).json({ msg: "NO SELLER LOGGED IN" });
   }
@@ -143,13 +132,12 @@ router.put("/delItem", (req, res) => {
 //browse items
 
 router.get("/browseItems", (req, res) => {
-  console.log('hit route get /browseItems');
+  
   User.findOne(
     { username: req.user.username }
 
   ).then(dbItems => {
-    console.log('successfully fetched items');
-    console.log(dbItems)
+    
     res.json(dbItems);
   }).catch(err => {
     res.json(err);

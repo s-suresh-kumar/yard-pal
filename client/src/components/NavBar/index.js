@@ -3,7 +3,6 @@ import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 
 function NavBar() {
-    console.log(window.location);
     return (
         <Nav fill variant="tabs" defaultActiveKey="/home">
             <Nav.Item>

@@ -38,7 +38,7 @@ function Login() {
       .then((response) => {
         if (response.status === 200) {
           dispatch({ type: SET_USER, user: response.data });
-          history.replace('/');
+          history.replace('/Browse');
         }
       })
       .catch((error) => {

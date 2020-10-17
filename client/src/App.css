@@ -88,3 +88,36 @@ hr {
 .pleaseClick {
   margin-left: 20px;
 }
+table {
+  margin: auto;
+  
+}
+
+tbody {
+  width: 1000px;
+}
+tr {
+
+}
+td {
+  width: 250px;
+  height: 30px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.entry-price {
+  text-align: left;
+  padding-left: 100px;
+}
+.entry-name {
+  padding-left: 40px;
+  text-align: left;
+}
+.entry-description {
+  padding-left: 30px;
+  text-align: left;
+}
+.entry-id {
+
+}
